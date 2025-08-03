@@ -1,1 +1,1 @@
-max element is65
+second largest element is20
