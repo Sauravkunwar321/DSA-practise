@@ -117,12 +117,38 @@ int findseclar(int arr[], int n){
 //   return slar;
 // }
 
+// int main()
+// {
+//   int arr[] = {1, 4, 4, 8, 20, 65, 65};
+//   int n = sizeof(arr) / sizeof(arr[0]);
+
+//   cout << "second largest element is" << findseclar(arr, n) << endl;
+
+//   return 0;
+// }
+
+
+
+//Q.3 to check is if the array is sorted or not
+
+bool issorted(int arr[], int n){
+  
+  for(int i=0; i<n-1 ; i++){
+
+    if(arr[i]>arr[i+1]){
+      return false;
+    }
+  }
+
+  return true;
+}
+
 int main()
 {
-  int arr[] = {1, 4, 4, 8, 20, 65, 65};
+  int arr[] = {1, 4, 4, 8, 20, 65, 35};
   int n = sizeof(arr) / sizeof(arr[0]);
 
-  cout << "second largest element is" << findseclar(arr, n) << endl;
+  printf("%s", issorted(arr, n)?"True":"False");
 
   return 0;
 }
