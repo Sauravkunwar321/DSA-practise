@@ -40,8 +40,7 @@ using namespace std;
 
 // to find second largest element without using sorting
 
-
-//using sorting approach, but this will work if there is no duplicates
+// using sorting approach, but this will work if there is no duplicates
 
 // int findseclar(int arr[], int n){
 
@@ -52,8 +51,7 @@ using namespace std;
 //   return arr[n-2];
 // }
 
-
-//sorting approach when there is duplicates
+// sorting approach when there is duplicates
 
 // int findseclar(int arr[], int n)
 // {
@@ -70,21 +68,25 @@ using namespace std;
 //   }
 // }
 
+// better appraoch to find second largest or second smallest using 2 loops, first for finding largest , after that find second largest
 
-//better appraoch to find second largest or second smallest using 2 loops, first for finding largest , after that find second largest
-
-int findseclar(int arr[], int n){
+int findseclar(int arr[], int n)
+{
 
   int lar = arr[0];
-  for(int i=0; i<n; i++){
-    if(arr[i]>lar){
+  for (int i = 0; i < n; i++)
+  {
+    if (arr[i] > lar)
+    {
       lar = arr[i];
     }
   }
 
   int slar = -1;
-  for(int i=0; i<n; i++){
-    if(arr[i]>slar && arr[i]!=lar){
+  for (int i = 0; i < n; i++)
+  {
+    if (arr[i] > slar && arr[i] != lar)
+    {
       slar = arr[i];
     }
   }
@@ -92,14 +94,12 @@ int findseclar(int arr[], int n){
   return slar;
 }
 
-//optimal approach to find second largest element in array
+// optimal approach to find second largest element in array
 
 // int findseclar(int arr[], int n)
 // {
 
 //   int lar = arr[0], slar = -1;
-
-  
 
 //   for (int i = 0; i < n; i++)
 //   {
@@ -127,28 +127,70 @@ int findseclar(int arr[], int n){
 //   return 0;
 // }
 
+// Q.3 to check is if the array is sorted or not
+
+// bool issorted(int arr[], int n)
+// {
+
+//   for (int i = 0; i < n - 1; i++)
+//   {
+
+//     if (arr[i] > arr[i + 1])
+//     {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
+// int main()
+// {
+//   int arr[] = {1, 4, 4, 8, 20, 65, 35};
+//   int n = sizeof(arr) / sizeof(arr[0]);
+
+//   printf("%s", issorted(arr, n) ? "True" : "False");
+
+//   return 0;
+// }
 
 
-//Q.3 to check is if the array is sorted or not
 
-bool issorted(int arr[], int n){
-  
-  for(int i=0; i<n-1 ; i++){
+// Q.4 remove dupliacts from sorted array
 
-    if(arr[i]>arr[i+1]){
-      return false;
-    }
-  }
+int removeDuplicates(int arr[], int n){
 
-  return true;
+
+ set<int> set;
+
+ for(int i=0; i<n; i++){
+  set.insert(arr[i]);
+ }
+
+ int k = set.size();
+ int j=0;
+ for(int x:set){
+   arr[j++] = x;
+ }
+
+ return k;
+
+
 }
 
 int main()
 {
-  int arr[] = {1, 4, 4, 8, 20, 65, 35};
+  int arr[] = {1, 4, 4, 8, 8, 6, 5};
   int n = sizeof(arr) / sizeof(arr[0]);
 
-  printf("%s", issorted(arr, n)?"True":"False");
+  int k = removeDuplicates(arr, n);
+
+  cout<<"after duplicate removal"<<endl;
+
+  for(int i = 0; i < k; i++)
+  {
+    cout << arr[i] << " ";
+  }
 
   return 0;
 }
