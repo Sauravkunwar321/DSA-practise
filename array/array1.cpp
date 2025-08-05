@@ -158,23 +158,44 @@ int findseclar(int arr[], int n)
 
 // Q.4 remove dupliacts from sorted array
 
+
+//bruteforce approach
+// int removeDuplicates(int arr[], int n){
+
+
+//  set<int> set;
+
+//  for(int i=0; i<n; i++){
+//   set.insert(arr[i]);
+//  }
+
+//  int k = set.size();
+//  int j=0;
+//  for(int x:set){
+//    arr[j++] = x;
+//  }
+
+//  return k;
+
+
+// }
+
+
+//optimal approach, two pointer approach
+
 int removeDuplicates(int arr[], int n){
 
+  // sort(arr, arr + n); // sorting the array first
 
- set<int> set;
+  int i=0;
+  for(int j=1; j<n; j++){
+    if(arr[i]!=arr[j]){
+      i++;
+      arr[i]=arr[j];
+    }
+  }
 
- for(int i=0; i<n; i++){
-  set.insert(arr[i]);
- }
-
- int k = set.size();
- int j=0;
- for(int x:set){
-   arr[j++] = x;
- }
-
- return k;
-
+  return i+1; // returning the new length of the array after removing duplicates
 
 }
 
