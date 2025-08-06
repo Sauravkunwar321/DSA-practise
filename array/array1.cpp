@@ -160,58 +160,107 @@ int findseclar(int arr[], int n)
 
 
 //bruteforce approach
-// int removeDuplicates(int arr[], int n){
+int removeDuplicates(int arr[], int n){
 
 
-//  set<int> set;
+ set<int> set;
 
-//  for(int i=0; i<n; i++){
-//   set.insert(arr[i]);
-//  }
+ for(int i=0; i<n; i++){
+  set.insert(arr[i]);
+ }
 
-//  int k = set.size();
-//  int j=0;
-//  for(int x:set){
-//    arr[j++] = x;
-//  }
+ int k = set.size();
+ int j=0;
+ for(int x:set){
+   arr[j++] = x;
+ }
 
-//  return k;
+ return k;
 
 
-// }
+}
 
 
 //optimal approach, two pointer approach
 
-int removeDuplicates(int arr[], int n){
+// int removeDuplicates(int arr[], int n){
 
-  // sort(arr, arr + n); // sorting the array first
+//   // sort(arr, arr + n); // sorting the array first
 
-  int i=0;
-  for(int j=1; j<n; j++){
-    if(arr[i]!=arr[j]){
-      i++;
-      arr[i]=arr[j];
-    }
+//   int i=0;
+//   for(int j=1; j<n; j++){
+//     if(arr[i]!=arr[j]){
+//       i++;
+//       arr[i]=arr[j];
+//     }
+//   }
+
+//   return i+1; // returning the new length of the array after removing duplicates
+
+// }
+
+// int main()
+// {
+//   int arr[] = {1, 4, 4, 8, 8, 6, 5};
+//   int n = sizeof(arr) / sizeof(arr[0]);
+
+//   int k = removeDuplicates(arr, n);
+
+//   cout<<"after duplicate removal"<<endl;
+
+//   for(int i = 0; i < k; i++)
+//   {
+//     cout << arr[i] << " ";
+//   }
+
+//   return 0;
+// }
+
+
+
+
+// Q.5 to left rotate array by 1 place 
+//bruteforce approach
+
+
+// void leftrotate(int arr[], int n){
+//   int temp[n];
+
+//   for(int i=1; i<n; i++){
+//     temp[i-1] = arr[i];
+
+//   }
+
+//   temp[n-1] = arr[0]; // last element will be first element
+
+//   for(int i=0; i<n; i++){
+//     cout<<temp[i]<<endl;
+//   }
+// }
+
+
+//optimal approach, not using another new array
+
+void leftrotate(int arr[], int n){
+  int temp = arr[0];
+
+  for(int i=0; i<n-1; i++){
+    arr[i] = arr[i+1];
   }
 
-  return i+1; // returning the new length of the array after removing duplicates
+  arr[n-1] = temp; // last element will be first element
 
+
+  for(int i=0; i<n; i++){
+    cout << arr[i] << endl;
+  }
 }
 
-int main()
-{
-  int arr[] = {1, 4, 4, 8, 8, 6, 5};
-  int n = sizeof(arr) / sizeof(arr[0]);
-
-  int k = removeDuplicates(arr, n);
-
-  cout<<"after duplicate removal"<<endl;
-
-  for(int i = 0; i < k; i++)
-  {
-    cout << arr[i] << " ";
-  }
+int main(){
+  int n= 7; 
+  int arr[]=  {1, 2, 3, 4, 5, 12, 8};
+  
+  leftrotate(arr, n);
 
   return 0;
 }
