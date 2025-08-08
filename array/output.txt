@@ -1,2 +1,2 @@
 after left rotation by 2 places
-3 4 5 12 8 1 2 
+3 14 5 123 8 1 2 

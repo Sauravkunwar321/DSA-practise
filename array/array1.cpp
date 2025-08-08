@@ -256,31 +256,106 @@ int removeDuplicates(int arr[], int n)
 // }
 
 // Q. no 6, rotate array by k places
+//bruteforce approach
 
+// void leftrotate(int arr[], int n, int k)
+// {
+
+//   k = k%n; // to handle cases where k is greater than n
+//   if (k == 0)
+//   {
+//     return; // no rotation needed
+//   }
+//   int temp[k];
+
+//   for (int i = 0; i < k; i++)
+//   {
+//     temp[i] = arr[i];
+//   }
+
+//   for (int i = k; i < n; i++)
+//   {
+//     arr[i - k] = arr[i];
+//   }
+
+//   for (int i = n - k; i < n; i++)
+//   {
+//     arr[i] = temp[i - (n - k)];
+//   }
+// }
+
+// int main()
+// {
+//   int n = 7;
+//   int arr[] = {1, 2, 3, 4, 5, 12, 8};
+//   int k = 2;
+
+//   leftrotate(arr, n, k);
+
+//   cout << "after left rotation by " << k << " places" << endl;
+//   for (int i = 0; i < n; i++)
+//   {
+//     cout << arr[i] << " ";
+//   }
+
+//   return 0;
+// }
+
+
+//optimal approach
+
+// shortcut way using reverse function of c++ 
+// void leftrotate(int arr[], int n, int k)
+// {
+//   k = k%n;
+//   if(k==0){
+//     return;
+//   }
+
+//   reverse(arr, arr+k);
+
+//   reverse(arr+k,arr+n);
+
+//   reverse(arr, arr+n);
+
+
+
+
+// }
+
+//using our own reverse function
+void Reverse(int arr[], int start, int end)
+{
+
+  while(start<=end){
+    int temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+    start++;
+    end--;
+  }
+
+}
 void leftrotate(int arr[], int n, int k)
 {
-  int temp[k];
-
-  for (int i = 0; i < k; i++)
+  k = k % n;
+  if (k == 0)
   {
-    temp[i] = arr[i];
+    return;
   }
 
-  for (int i = k; i < n; i++)
-  {
-    arr[i - k] = arr[i];
-  }
+  Reverse(arr, 0, k-1);
 
-  for (int i = n - k; i < n; i++)
-  {
-    arr[i] = temp[i - (n - k)];
-  }
+  Reverse(arr, k, n-1);
+
+  Reverse(arr,0, n-1);
 }
+
 
 int main()
 {
   int n = 7;
-  int arr[] = {1, 2, 3, 4, 5, 12, 8};
+  int arr[] = {1, 2, 3, 14, 5, 123, 8};
   int k = 2;
 
   leftrotate(arr, n, k);
