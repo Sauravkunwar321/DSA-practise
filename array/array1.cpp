@@ -154,34 +154,30 @@ int findseclar(int arr[], int n)
 //   return 0;
 // }
 
-
-
 // Q.4 remove dupliacts from sorted array
 
+// bruteforce approach
+int removeDuplicates(int arr[], int n)
+{
 
-//bruteforce approach
-int removeDuplicates(int arr[], int n){
+  set<int> set;
 
+  for (int i = 0; i < n; i++)
+  {
+    set.insert(arr[i]);
+  }
 
- set<int> set;
+  int k = set.size();
+  int j = 0;
+  for (int x : set)
+  {
+    arr[j++] = x;
+  }
 
- for(int i=0; i<n; i++){
-  set.insert(arr[i]);
- }
-
- int k = set.size();
- int j=0;
- for(int x:set){
-   arr[j++] = x;
- }
-
- return k;
-
-
+  return k;
 }
 
-
-//optimal approach, two pointer approach
+// optimal approach, two pointer approach
 
 // int removeDuplicates(int arr[], int n){
 
@@ -216,12 +212,8 @@ int removeDuplicates(int arr[], int n){
 //   return 0;
 // }
 
-
-
-
-// Q.5 to left rotate array by 1 place 
-//bruteforce approach
-
+// Q.5 to left rotate array by 1 place
+// bruteforce approach
 
 // void leftrotate(int arr[], int n){
 //   int temp[n];
@@ -238,29 +230,66 @@ int removeDuplicates(int arr[], int n){
 //   }
 // }
 
+// optimal approach, not using another new array
 
-//optimal approach, not using another new array
+// void leftrotate(int arr[], int n){
+//   int temp = arr[0];
 
-void leftrotate(int arr[], int n){
-  int temp = arr[0];
+//   for(int i=0; i<n-1; i++){
+//     arr[i] = arr[i+1];
+//   }
 
-  for(int i=0; i<n-1; i++){
-    arr[i] = arr[i+1];
+//   arr[n-1] = temp; // last element will be first element
+
+//   for(int i=0; i<n; i++){
+//     cout << arr[i] << endl;
+//   }
+// }
+
+// int main(){
+//   int n= 7;
+//   int arr[]=  {1, 2, 3, 4, 5, 12, 8};
+
+//   leftrotate(arr, n);
+
+//   return 0;
+// }
+
+// Q. no 6, rotate array by k places
+
+void leftrotate(int arr[], int n, int k)
+{
+  int temp[k];
+
+  for (int i = 0; i < k; i++)
+  {
+    temp[i] = arr[i];
   }
 
-  arr[n-1] = temp; // last element will be first element
+  for (int i = k; i < n; i++)
+  {
+    arr[i - k] = arr[i];
+  }
 
-
-  for(int i=0; i<n; i++){
-    cout << arr[i] << endl;
+  for (int i = n - k; i < n; i++)
+  {
+    arr[i] = temp[i - (n - k)];
   }
 }
 
-int main(){
-  int n= 7; 
-  int arr[]=  {1, 2, 3, 4, 5, 12, 8};
-  
-  leftrotate(arr, n);
+int main()
+{
+  int n = 7;
+  int arr[] = {1, 2, 3, 4, 5, 12, 8};
+  int k = 2;
+
+  leftrotate(arr, n, k);
+
+  cout << "after left rotation by " << k << " places" << endl;
+  for (int i = 0; i < n; i++)
+  {
+    cout << arr[i] << " ";
+  }
 
   return 0;
 }
