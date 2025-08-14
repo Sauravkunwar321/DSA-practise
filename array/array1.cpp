@@ -365,7 +365,7 @@ int removeDuplicates(int arr[], int n)
 // }
 
 // Qno.7 , move zeros to the end
-// bruteforce method
+// bruteforce method, tc= O(2n)
 
 void moveZero(int arr[], int n)
 {
