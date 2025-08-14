@@ -256,7 +256,7 @@ int removeDuplicates(int arr[], int n)
 // }
 
 // Q. no 6, rotate array by k places
-//bruteforce approach
+// bruteforce approach
 
 // void leftrotate(int arr[], int n, int k)
 // {
@@ -301,10 +301,9 @@ int removeDuplicates(int arr[], int n)
 //   return 0;
 // }
 
+// optimal approach
 
-//optimal approach
-
-// shortcut way using reverse function of c++ 
+// shortcut way using reverse function of c++
 // void leftrotate(int arr[], int n, int k)
 // {
 //   k = k%n;
@@ -318,49 +317,89 @@ int removeDuplicates(int arr[], int n)
 
 //   reverse(arr, arr+n);
 
-
-
-
 // }
 
-//using our own reverse function
-void Reverse(int arr[], int start, int end)
-{
+// using our own reverse function
+//  void Reverse(int arr[], int start, int end)
+//  {
 
-  while(start<=end){
-    int temp = arr[start];
-    arr[start] = arr[end];
-    arr[end] = temp;
-    start++;
-    end--;
-  }
+//   while(start<=end){
+//     int temp = arr[start];
+//     arr[start] = arr[end];
+//     arr[end] = temp;
+//     start++;
+//     end--;
+//   }
 
-}
-void leftrotate(int arr[], int n, int k)
+// }
+// void leftrotate(int arr[], int n, int k)
+// {
+//   k = k % n;
+//   if (k == 0)
+//   {
+//     return;
+//   }
+
+//   Reverse(arr, 0, k-1);
+
+//   Reverse(arr, k, n-1);
+
+//   Reverse(arr,0, n-1);
+// }
+
+// int main()
+// {
+//   int n = 7;
+//   int arr[] = {1, 2, 3, 14, 5, 123, 8};
+//   int k = 2;
+
+//   leftrotate(arr, n, k);
+
+//   cout << "after left rotation by " << k << " places" << endl;
+//   for (int i = 0; i < n; i++)
+//   {
+//     cout << arr[i] << " ";
+//   }
+
+//   return 0;
+// }
+
+// Qno.7 , move zeros to the end
+// bruteforce method
+
+void moveZero(int arr[], int n)
 {
-  k = k % n;
-  if (k == 0)
+  vector<int> vec;
+  for (int i = 0; i < n; i++)
   {
-    return;
+    if (arr[i] != 0)
+    {
+      vec.push_back(arr[i]);
+    }
   }
 
-  Reverse(arr, 0, k-1);
+  int k = vec.size();
+  int j = 0;
 
-  Reverse(arr, k, n-1);
+  for (int x : vec)
+  {
+    arr[j++] = x;
+  }
 
-  Reverse(arr,0, n-1);
+  for (int i = k; i < n; i++)
+  {
+    arr[i] = 0;
+  }
 }
-
 
 int main()
 {
-  int n = 7;
-  int arr[] = {1, 2, 3, 14, 5, 123, 8};
-  int k = 2;
+  int n = 6;
+  int arr[] = {1, 0, 2, 3, 0, 5};
 
-  leftrotate(arr, n, k);
+  moveZero(arr, n);
 
-  cout << "after left rotation by " << k << " places" << endl;
+  cout << "zero to end" << endl;
   for (int i = 0; i < n; i++)
   {
     cout << arr[i] << " ";
