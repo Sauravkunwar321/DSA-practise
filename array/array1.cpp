@@ -394,45 +394,73 @@ int removeDuplicates(int arr[], int n)
 
 // optimal approach, using two pointers
 
-void moveZero(int arr[], int n)
-{
-  int j = -1;
+// void moveZero(int arr[], int n)
+// {
+//   int j = -1;
 
-  for (int i = 0; i < n; i++)
-  {
-    if (arr[i] == 0)
-    {
-      j = i;
-      break;
+//   for (int i = 0; i < n; i++)
+//   {
+//     if (arr[i] == 0)
+//     {
+//       j = i;
+//       break;
+//     }
+//   }
+
+//   if (j == -1)
+//     return;
+
+//   // increase i and j and swap accordingly
+//   for (int i = j + 1; i < n; i++)
+//   {
+//     if (arr[i] != 0)
+//     {
+//       swap(arr[i], arr[j]);
+//       j++;
+//     }
+//   }
+// }
+
+// int main()
+// {
+//   int n = 6;
+//   int arr[] = {1, 0, 2, 3, 0, 51};
+
+//   moveZero(arr, n);
+
+//   cout << "zero to end" << endl;
+//   for (int i = 0; i < n; i++)
+//   {
+//     cout << arr[i] << " ";
+//   }
+
+//   return 0;
+// }
+
+
+// qno.8 Linear search 
+// given an int num, find its first position when it occur, if not occur return -1
+
+
+int search(int arr[], int n, int num){
+  for(int i=0; i<n; i++){
+    if(arr[i]==num){
+      return i;
     }
   }
 
-  if (j == -1)
-    return;
-
-  // increase i and j and swap accordingly
-  for (int i = j + 1; i < n; i++)
-  {
-    if (arr[i] != 0)
-    {
-      swap(arr[i], arr[j]);
-      j++;
-    }
-  }
+  return -1;
 }
 
 int main()
 {
   int n = 6;
   int arr[] = {1, 0, 2, 3, 0, 51};
+  int num =3;
 
-  moveZero(arr, n);
+  int index = search(arr, n, num);
 
-  cout << "zero to end" << endl;
-  for (int i = 0; i < n; i++)
-  {
-    cout << arr[i] << " ";
-  }
+  cout<< "my index is"<<index<<endl;
 
   return 0;
 }
