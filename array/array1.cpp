@@ -367,35 +367,64 @@ int removeDuplicates(int arr[], int n)
 // Qno.7 , move zeros to the end
 // bruteforce method, tc= O(2n)
 
+// void moveZero(int arr[], int n)
+// {
+//   vector<int> vec;
+//   for (int i = 0; i < n; i++)
+//   {
+//     if (arr[i] != 0)
+//     {
+//       vec.push_back(arr[i]);
+//     }
+//   }
+
+//   int k = vec.size();
+//   int j = 0;
+
+//   for (int x : vec)
+//   {
+//     arr[j++] = x;
+//   }
+
+//   for (int i = k; i < n; i++)
+//   {
+//     arr[i] = 0;
+//   }
+// }
+
+// optimal approach, using two pointers
+
 void moveZero(int arr[], int n)
 {
-  vector<int> vec;
+  int j = -1;
+
   for (int i = 0; i < n; i++)
   {
-    if (arr[i] != 0)
+    if (arr[i] == 0)
     {
-      vec.push_back(arr[i]);
+      j = i;
+      break;
     }
   }
 
-  int k = vec.size();
-  int j = 0;
+  if (j == -1)
+    return;
 
-  for (int x : vec)
+  // increase i and j and swap accordingly
+  for (int i = j + 1; i < n; i++)
   {
-    arr[j++] = x;
-  }
-
-  for (int i = k; i < n; i++)
-  {
-    arr[i] = 0;
+    if (arr[i] != 0)
+    {
+      swap(arr[i], arr[j]);
+      j++;
+    }
   }
 }
 
 int main()
 {
   int n = 6;
-  int arr[] = {1, 0, 2, 3, 0, 5};
+  int arr[] = {1, 0, 2, 3, 0, 51};
 
   moveZero(arr, n);
 
