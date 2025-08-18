@@ -437,30 +437,76 @@ int removeDuplicates(int arr[], int n)
 //   return 0;
 // }
 
-
-// qno.8 Linear search 
+// qno.8 Linear search
 // given an int num, find its first position when it occur, if not occur return -1
 
+// int search(int arr[], int n, int num){
+//   for(int i=0; i<n; i++){
+//     if(arr[i]==num){
+//       return i;
+//     }
+//   }
 
-int search(int arr[], int n, int num){
-  for(int i=0; i<n; i++){
-    if(arr[i]==num){
-      return i;
-    }
+//   return -1;
+// }
+
+// int main()
+// {
+//   int n = 6;
+//   int arr[] = {1, 0, 2, 3, 0, 51};
+//   int num =3;
+
+//   int index = search(arr, n, num);
+
+//   cout<< "my index is"<<index<<endl;
+
+//   return 0;
+// }
+
+// Q.no. 9 find the union of two sorted arrays
+
+vector<int> setunion(vector<int> v1, vector<int> v2)
+{
+  set<int> st;
+  int n1 = v1.size();
+  int n2 = v2.size();
+
+  for (int i = 0; i < n1; i++)
+  {
+    st.insert(v1[i]);
   }
 
-  return -1;
+  for (int i = 0; i < n2; i++)
+  {
+    st.insert(v2[i]);
+  }
+
+  vector<int> temp;
+
+  for (auto it : st)
+  {
+    temp.push_back(it);
+  }
+
+  return temp;
 }
 
 int main()
 {
-  int n = 6;
-  int arr[] = {1, 0, 2, 3, 0, 51};
-  int num =3;
 
-  int index = search(arr, n, num);
+  vector<int> v1 = {1, 6, 2, 3, 1, 4};
+  vector<int> v2 = {6, 8, 3, 9, 4};
 
-  cout<< "my index is"<<index<<endl;
+  // int num = 3;
+  vector<int> v3;
+
+  v3 = setunion(v1, v2);
+
+  int n = v3.size();
+  for (int i = 0; i < n; i++)
+  {
+    cout << v3[i] << endl;
+  }
 
   return 0;
 }
