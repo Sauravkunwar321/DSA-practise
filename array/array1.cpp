@@ -465,6 +465,8 @@ int removeDuplicates(int arr[], int n)
 
 // Q.no. 9 find the union of two sorted arrays
 
+//bruteforce approach, using set
+
 vector<int> setunion(vector<int> v1, vector<int> v2)
 {
   set<int> st;
