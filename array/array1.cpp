@@ -463,52 +463,98 @@ int removeDuplicates(int arr[], int n)
 //   return 0;
 // }
 
-// Q.no. 9 find the union of two sorted arrays
+// Q.no. 9 find the unionArr of two sorted arrays
 
 //bruteforce approach, using set
 
-vector<int> setunion(vector<int> v1, vector<int> v2)
-{
-  set<int> st;
-  int n1 = v1.size();
-  int n2 = v2.size();
+// vector<int> setunionArr(vector<int> v1, vector<int> v2)
+// {
+//   set<int> st;
+//   int n1 = v1.size();
+//   int n2 = v2.size();
 
-  for (int i = 0; i < n1; i++)
-  {
-    st.insert(v1[i]);
-  }
+//   for (int i = 0; i < n1; i++)
+//   {
+//     st.insert(v1[i]);
+//   }
 
-  for (int i = 0; i < n2; i++)
-  {
-    st.insert(v2[i]);
-  }
+//   for (int i = 0; i < n2; i++)
+//   {
+//     st.insert(v2[i]);
+//   }
 
-  vector<int> temp;
+//   vector<int> temp;
 
-  for (auto it : st)
-  {
-    temp.push_back(it);
-  }
+//   for (auto it : st)
+//   {
+//     temp.push_back(it);
+//   }
 
-  return temp;
-}
+//   return temp;
+// }
 
-int main()
-{
 
-  vector<int> v1 = {1, 6, 2, 3, 1, 4};
-  vector<int> v2 = {6, 8, 3, 9, 4};
+//optimal appraoch using two pointer, optimal appraoch only work for sorted, but bruteforce uses set , so it can work for unsorted aray as well as set can automatically sort them while storing
 
-  // int num = 3;
-  vector<int> v3;
+// vector<int> setunionArr(vector<int> a, vector<int> b){
+//   int n1= a.size();
+//   int n2= b.size();
 
-  v3 = setunion(v1, v2);
 
-  int n = v3.size();
-  for (int i = 0; i < n; i++)
-  {
-    cout << v3[i] << endl;
-  }
+//   int i=0;
+//   int j=0;
+//   vector<int> unionArr;
 
-  return 0;
-}
+//   while(i<n1 && j<n2){
+//     if(a[i]<=b[j]){
+//       if(unionArr.size()==0 || unionArr.back()!=a[i]){
+//         unionArr.push_back(a[i]);
+//       }
+//       i++;
+//     }else{
+//       if(unionArr.size()==0 || unionArr.back()!=b[j]){
+//         unionArr.push_back(b[j]);
+//       }
+//       j++;
+//     }
+//   }
+
+//   while(i<n1){
+//     if(unionArr.back()!=a[i]){
+//       unionArr.push_back(a[i]);
+//     }
+//     i++;
+//   }
+
+//   while(j < n2)
+//   {
+//     if (unionArr.back() != b[j])
+//     {
+//       unionArr.push_back(b[j]);
+//     }
+//     j++;
+//   }
+//   return unionArr;
+// }
+
+// int main()
+// {
+
+//   vector<int> v1 = {1, 6, 8, 11, 12, 24};
+//   vector<int> v2 = {6, 8, 11, 22, 24};
+
+//   // int num = 3;
+//   vector<int> v3;
+
+//   v3 = setunionArr(v1, v2);
+
+//   int n = v3.size();
+//   for (int i = 0; i < n; i++)
+//   {
+//     cout << v3[i] << endl;
+//   }
+
+//   return 0;
+// }
+
+
