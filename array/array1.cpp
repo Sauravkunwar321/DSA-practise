@@ -465,7 +465,7 @@ int removeDuplicates(int arr[], int n)
 
 // Q.no. 9 find the unionArr of two sorted arrays
 
-//bruteforce approach, using set
+// bruteforce approach, using set
 
 // vector<int> setunionArr(vector<int> v1, vector<int> v2)
 // {
@@ -493,13 +493,11 @@ int removeDuplicates(int arr[], int n)
 //   return temp;
 // }
 
-
-//optimal appraoch using two pointer, optimal appraoch only work for sorted, but bruteforce uses set , so it can work for unsorted aray as well as set can automatically sort them while storing
+// optimal appraoch using two pointer, optimal appraoch only work for sorted, but bruteforce uses set , so it can work for unsorted aray as well as set can automatically sort them while storing
 
 // vector<int> setunionArr(vector<int> a, vector<int> b){
 //   int n1= a.size();
 //   int n2= b.size();
-
 
 //   int i=0;
 //   int j=0;
@@ -561,23 +559,25 @@ int removeDuplicates(int arr[], int n)
 
 // bruteforce appraoch
 
+int missingNumber(vector<int> &a, int N)
+{
 
-int missingNumber(vector<int> &a, int N){
+  for (int i = 1; i <= N; i++)
+  {
 
-  for(int i=1; i<=N; i++){
+    int flag = 0;
 
-    int flag =0;
-
-    for(int j=0; j<N-1; j++){
-      if(a[j]==i){
-        flag=-1;
+    for (int j = 0; j < N - 1; j++)
+    {
+      if (a[j] == i)
+      {
+        flag = -1;
         break;
       }
     }
 
-    if(flag==0) return i;
-
-
+    if (flag == 0)
+      return i;
   }
 
   return -1;
