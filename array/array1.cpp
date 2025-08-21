@@ -559,34 +559,56 @@ int removeDuplicates(int arr[], int n)
 
 // bruteforce appraoch
 
-int missingNumber(vector<int> &a, int N)
-{
+// int missingNumber(vector<int> &a, int N)
+// {
 
-  for (int i = 1; i <= N; i++)
-  {
+//   for (int i = 1; i <= N; i++)
+//   {
 
-    int flag = 0;
+//     int flag = 0;
 
-    for (int j = 0; j < N - 1; j++)
-    {
-      if (a[j] == i)
-      {
-        flag = -1;
-        break;
-      }
-    }
+//     for (int j = 0; j < N - 1; j++)
+//     {
+//       if (a[j] == i)
+//       {
+//         flag = -1;
+//         break;
+//       }
+//     }
 
-    if (flag == 0)
-      return i;
+//     if (flag == 0)
+//       return i;
+//   }
+
+//   return -1;
+// }
+
+
+//better appraoch
+
+
+int missingNumber(vector<int> &a, int N){
+
+  int hash[N+1] = {0};
+
+  for(int i=0; i<N-1; i++){
+    hash[a[i]] =1;
+
   }
 
-  return -1;
+  for(int j=1; j<=N; j++){
+    if(hash[j] == 0){
+      return j;
+
+    }
+  }
+ return -1;
 }
 
 int main()
 {
   int N = 5;
-  vector<int> a = {1, 2, 3, 5};
+  vector<int> a = {1, 2, 3, 4};
   int ans = missingNumber(a, N);
   cout << "misssing number" << ans << endl;
   return 0;
